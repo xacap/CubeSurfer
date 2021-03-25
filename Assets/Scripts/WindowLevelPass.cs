@@ -1,20 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-
-public class WindowGameFinish : MonoBehaviour
+public class WindowLevelPass : MonoBehaviour
 {
-
-    public Text winTextFinish;
+    public Text winTextLP;
     public void Restart()
     {
         SceneManager.LoadScene(0);
         Time.timeScale = 1.0f;
-       //Destroy(this.gameObject);
+        //Destroy(this.gameObject);
     }
     void Start()
     {
@@ -28,10 +25,10 @@ public class WindowGameFinish : MonoBehaviour
         switch (winnerBoxState)
         {
             case EPlayerState.ePlayerWinner:
-                winTextFinish.text = "“Level Passed!";
+                winTextLP.text = "“Level Passed!";
                 break;
-            case EPlayerState.ePlayerLost :
-                winTextFinish.text = "Level Failed!";
+            case EPlayerState.ePlayerLost:
+                winTextLP.text = "Level Failed!";
                 break;
         }
     }

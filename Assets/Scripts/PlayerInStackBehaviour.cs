@@ -43,7 +43,7 @@ public class PlayerInStackBehaviour : MonoBehaviour
             {
                 Debug.Log("попал в финиш");
                 mState = EPlayerState.ePlayerWinner;
-                _gameManager.GameFinish();
+                _gameManager.LevelPassed();
 
 
             }
@@ -64,9 +64,6 @@ public class PlayerInStackBehaviour : MonoBehaviour
 
     }
     
-
-
-
 
    
     public EPlayerState GetState()

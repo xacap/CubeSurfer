@@ -9,18 +9,20 @@ public class PlayerBehavior : MonoBehaviour
     private float vInput;
     private float hInput;
     private Rigidbody _rb;
-    private float platformOut = 2;
-
+    public bool run;
 
 
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        run = false;
     }
 
     
     void FixedUpdate()
     {
+       if (run)
+        { 
         Vector3 forwardRun = this.transform.position + this.transform.forward * moveSpeed * Time.fixedDeltaTime;
         _rb.transform.position = forwardRun;
 
@@ -45,11 +47,10 @@ public class PlayerBehavior : MonoBehaviour
             _rb.transform.position = runPos;
 
         }
+        }
 
     }
    
-
    
-
     
 }

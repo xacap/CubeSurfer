@@ -13,7 +13,7 @@ public class StackGenerator : MonoBehaviour
     void Awake()
     { if (instance == null) { instance = this; } }
 
-    void Start()
+    public void Start()
     {
         GenerateStack();
     }
