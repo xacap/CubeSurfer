@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class StartPanel : MonoBehaviour
 {
-    private PlayerBehavior _playerManager;
+    private PlayerBehavior _playerBehaviour;
 
     private void Start()
     {
-        _playerManager = GameObject.Find("GenerateStack").GetComponent<PlayerBehavior>();
+        _playerBehaviour = GameObject.Find("GenerateStack").GetComponent<PlayerBehavior>();
 
     }
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            _playerManager.run = true;
+            _playerBehaviour.run = true;
             GameBehavior.instance.StartGame();
             Destroy(this.gameObject);
 

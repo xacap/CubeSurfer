@@ -51,7 +51,6 @@ public class GameBehavior : MonoBehaviour, IManager
     }
     public void StartGame()
     {
-        //StackGenerator.instance.StartGame();
         SetGameState(EGameState.inGame);
     }
    
@@ -110,11 +109,9 @@ public class GameBehavior : MonoBehaviour, IManager
     public int Items
     {
         get { return _itemsCollected; }
-
         set
         {
             _itemsCollected = value;
-            
         }
     }
 

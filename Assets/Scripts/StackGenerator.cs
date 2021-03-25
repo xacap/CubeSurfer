@@ -131,7 +131,7 @@ public class StackGenerator : MonoBehaviour
         Destroy(_go, 5);
     }
 
-    float rayDistance = 0.7f;
+    float rayDistance = 0.5f;
     void FixedUpdate()
     {
         List<GameObject> tmpArray = stack;

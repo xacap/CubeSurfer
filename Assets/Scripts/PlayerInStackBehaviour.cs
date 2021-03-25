@@ -11,7 +11,7 @@ public enum EPlayerState
 public class PlayerInStackBehaviour : MonoBehaviour
 {
     private EPlayerState mState = EPlayerState.ePlayerActive;
-    float rayDistance = 0.7f;
+    float rayDistance = 0.5f;
     float rayDown = 1f;
     private GameBehavior _gameManager;
 
@@ -27,7 +27,7 @@ public class PlayerInStackBehaviour : MonoBehaviour
         Debug.DrawRay(this.transform.position, Vector3.forward * rayDistance);
 
         Ray cubeRay1 = new Ray(this.transform.position, Vector3.down);
-        Debug.DrawRay(this.transform.position,  Vector3.down * rayDown);
+        Debug.DrawRay(this.transform.position, Vector3.down * rayDown);
 
         RaycastHit hit;
 
@@ -63,9 +63,9 @@ public class PlayerInStackBehaviour : MonoBehaviour
         }
 
     }
-    
 
-   
+
+
     public EPlayerState GetState()
     {
         return mState;

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class ItemBehavior : MonoBehaviour
 {
-    public GameBehavior gameManager;
+    GameBehavior _gameManager;
 
     void Start()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameBehavior>();
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameBehavior>();
     }
 
     void OnCollisionEnter(Collision collision)
@@ -17,7 +17,7 @@ public class ItemBehavior : MonoBehaviour
         { 
             Destroy(this.transform.parent.gameObject);
 
-            gameManager.Items += 1;
+            _gameManager.Items += 1;
         }
     }
     
