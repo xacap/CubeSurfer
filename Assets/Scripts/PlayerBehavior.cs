@@ -6,11 +6,10 @@ using UnityEngine;
 public class PlayerBehavior : MonoBehaviour
 {
     public float moveSpeed = 10f;
-    private float vInput;
     private float hInput;
     private Rigidbody _rb;
     public bool run;
-
+    public float rotateSpeed = 75f;
 
     void Start()
     {
@@ -21,36 +20,41 @@ public class PlayerBehavior : MonoBehaviour
     
     void FixedUpdate()
     {
-       if (run)
-        { 
-        Vector3 forwardRun = this.transform.position + this.transform.forward * moveSpeed * Time.fixedDeltaTime;
-        _rb.transform.position = forwardRun;
-
-        hInput = Input.GetAxis("Horizontal") * moveSpeed;
-
-        if (hInput != 0)
+        if (run)
         {
-            
-            Vector3 leftOut = new Vector3(-2, this.transform.position.y, this.transform.position.z);
-            Vector3 rightOut = new Vector3(2, this.transform.position.y, this.transform.position.z);
+            Vector3 forwardRun = this.transform.position + this.transform.forward * moveSpeed * Time.fixedDeltaTime;
+            _rb.transform.position = forwardRun;
 
-            Vector3 runPos = this.transform.position + this.transform.right * hInput * Time.fixedDeltaTime;
-            
-            if (runPos.x < leftOut.x)
-            {
-                runPos.x = leftOut.x;
-            }
-            if (runPos.x > rightOut.x)
-            {
-                runPos.x = rightOut.x;
-            }
-            _rb.transform.position = runPos;
+            hInput = Input.GetAxis("Horizontal") * moveSpeed;
 
-        }
+            if (hInput != 0)
+            {
+            
+                Vector3 leftOut = new Vector3(-2, this.transform.position.y, this.transform.position.z);
+                Vector3 rightOut = new Vector3(2, this.transform.position.y, this.transform.position.z);
+
+                Vector3 runPos = this.transform.position + this.transform.right * hInput * Time.fixedDeltaTime;
+            
+                if (runPos.x < leftOut.x)
+                {
+                    runPos.x = leftOut.x;
+                }
+                if (runPos.x > rightOut.x)
+                {
+                    runPos.x = rightOut.x;
+                }
+                _rb.transform.position = runPos;
+
+            }
         }
 
     }
-   
-   
-    
+
+    public void Turn(float angle)
+    {
+        _rb.transform.rotation = Quaternion.Slerp(_rb.transform.rotation, Quaternion.Euler(0, angle, 0), Time.deltaTime * rotateSpeed);
+
+    }
+
+
 }

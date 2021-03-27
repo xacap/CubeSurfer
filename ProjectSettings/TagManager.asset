@@ -9,6 +9,8 @@ TagManager:
   - CubeStack
   - platform
   - FinishTrigger
+  - TriggerLeft
+  - TriggerRight
   layers:
   - Default
   - TransparentFX

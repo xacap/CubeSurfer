@@ -20,9 +20,11 @@ public class LevelGenerator : MonoBehaviour
         GenerateInitialPieces();
     }
 
+    
+
     public void GenerateInitialPieces()
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 4; i++)
         {
             AddPiece();
         }
@@ -30,22 +32,28 @@ public class LevelGenerator : MonoBehaviour
 
     public void AddPiece()
     {
-        int randomIndex = Random.Range(0, levelPrefabs.Count);
+        //int randomIndex = Random.Range(0, levelPrefabs.Count);
 
         LevelPiece piece = new LevelPiece();
 
-        if (pieceCount == 3)
-        {
-            piece = (LevelPiece)Instantiate(pieceFinish);
-        }
-        else 
-        {
-            piece = (LevelPiece)Instantiate(levelPrefabs[randomIndex]);
-        }
+        piece = (LevelPiece)Instantiate(levelPrefabs[pieceCount]);
+
+        /*
+         if (pieceCount == 3)
+         {
+             piece = (LevelPiece)Instantiate(pieceFinish);
+         }
+         else 
+         {
+             piece = (LevelPiece)Instantiate(levelPrefabs[pieceCount]);
+         }
+        */
 
         piece.transform.SetParent(this.transform, false);
 
         Vector3 spawnPosition = Vector3.zero;
+       // Quaternion spawnRotation = new Quaternion (0,0,0,0);
+        
         Vector3 offset = new Vector3 (0, 0, 12);           
 
         if (pieces.Count == 0)
@@ -55,11 +63,19 @@ public class LevelGenerator : MonoBehaviour
         else
         {
             spawnPosition = pieces[pieces.Count - 1].exitPoint.position + offset;
+           // spawnRotation = pieces[pieces.Count - 1].exitPoint.rotation;
         }
 
+       // piece.transform.rotation = spawnRotation;
         piece.transform.position = spawnPosition;
+        
         pieces.Add(piece);
         pieceCount++;
+
+        if (pieceCount >= 4)
+        {
+            pieceCount = 0;
+        }
     }
 
     public void RemoveOldestPiece()

@@ -47,6 +47,19 @@ public class PlayerInStackBehaviour : MonoBehaviour
 
 
             }
+            else if (hit.collider.gameObject.CompareTag("TriggerLeft"))
+            {
+
+                PlayerBehavior _go = GameObject.Find("GenerateStack").GetComponent<PlayerBehavior>();
+                _go.Turn(-90);
+            }
+            else if (hit.collider.gameObject.CompareTag("TriggerRight"))
+            {
+
+                PlayerBehavior _go = GameObject.Find("GenerateStack").GetComponent<PlayerBehavior>();
+                _go.Turn(0);
+            }
+
 
         }
         else if (Physics.Raycast(this.transform.position, Vector3.down, out hit, rayDown))
