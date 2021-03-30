@@ -141,6 +141,7 @@ public class StackGenerator : MonoBehaviour
         {
             Ray cubeRay = new Ray(_go.transform.position, _go.transform.forward);
             Debug.DrawRay(_go.transform.position, _go.transform.forward * rayDistance);
+
             RaycastHit hit;
 
             if (Physics.Raycast(_go.transform.position, _go.transform.forward, out hit, rayDistance))

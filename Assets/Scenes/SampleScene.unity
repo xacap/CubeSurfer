@@ -119,7 +119,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 7e2b71c22af8a094da7c267d92c39d19, type: 2}
+  m_NavMeshData: {fileID: 0}
 --- !u!223 &123496149 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 3072634144417525899, guid: 14fc37c51206ac147850370c60d91d75,
@@ -496,7 +496,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: NaN, y: 8.4e-44, z: 1.8522868e-38, w: 9.1835e-41}
+  m_BoundingSphereOverride: {x: 3.67342e-40, y: 2.204052e-39, z: 0, w: 4.5e-44}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -745,9 +745,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelPrefabs:
   - {fileID: 5952797754805861008, guid: e50790e7c55978d419777a2e299b9543, type: 3}
-  - {fileID: 3757295218922168116, guid: 03d244e3a934e114588d29a1492f0374, type: 3}
-  - {fileID: 3757295218922168116, guid: 03d244e3a934e114588d29a1492f0374, type: 3}
+  - {fileID: 5952797754805861008, guid: e50790e7c55978d419777a2e299b9543, type: 3}
   - {fileID: 5556488370261067249, guid: 2a91de17d9d370145ad394c8112f704f, type: 3}
+  - {fileID: 5952797754805861008, guid: e50790e7c55978d419777a2e299b9543, type: 3}
   levelStartPoint: {fileID: 1357395135}
   pieces: []
   pieceFinish: {fileID: 5556488370261067249, guid: 2a91de17d9d370145ad394c8112f704f,
@@ -1045,12 +1045,17 @@ PrefabInstance:
     - target: {fileID: 615852678416051762, guid: 2bce77030cf7393498d3648e3ef362e6,
         type: 3}
       propertyPath: rotateSpeed
-      value: 25
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 615852678416051762, guid: 2bce77030cf7393498d3648e3ef362e6,
         type: 3}
       propertyPath: v
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 615852678416051762, guid: 2bce77030cf7393498d3648e3ef362e6,
+        type: 3}
+      propertyPath: run
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 615852678416051766, guid: 2bce77030cf7393498d3648e3ef362e6,
         type: 3}

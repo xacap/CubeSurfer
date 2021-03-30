@@ -11,6 +11,8 @@ TagManager:
   - FinishTrigger
   - TriggerLeft
   - TriggerRight
+  - PlatformX
+  - PlatformY
   layers:
   - Default
   - TransparentFX
