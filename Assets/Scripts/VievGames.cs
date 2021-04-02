@@ -11,7 +11,5 @@ public class VievGames : MonoBehaviour
     void Update()
     {
         scoreLabel.text = GameBehavior.instance._itemsCollected.ToString("f0");
-
-
     }
 }

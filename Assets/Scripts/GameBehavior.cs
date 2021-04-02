@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
 public enum EGameState
 { 
     start,
@@ -16,7 +15,6 @@ public class GameBehavior : MonoBehaviour, IManager
 {
     public static GameBehavior instance;
 
-
     private string _state;
     private UIController _UIController = new UIController();
 
@@ -28,20 +26,16 @@ public class GameBehavior : MonoBehaviour, IManager
     public int _itemsCollected = 0;
     public EGameState currentGameState = EGameState.start;
 
-
     void Awake() 
     {
         if (instance == null) {instance = this;}
     }
-
     void Start()
     {
         currentGameState = EGameState.start;
-
         Initialize();
         InventoryList<string> inventoryList = new
         InventoryList<string>();
-
     }
 
     public string State
@@ -59,7 +53,6 @@ public class GameBehavior : MonoBehaviour, IManager
         Time.timeScale = 0f;
         SetGameState(EGameState.levelPass);
         _UIController.ShowLevelPassWindow(EPlayerState.ePlayerWinner);
-
     }
 
     public void GameFinish()
@@ -68,7 +61,6 @@ public class GameBehavior : MonoBehaviour, IManager
         SetGameState(EGameState.gameOver);
 
         _UIController.ShowGameFinishWindow(EPlayerState.ePlayerLost);
-
     }
 
     void SetGameState(EGameState newGameState)
@@ -101,7 +93,6 @@ public class GameBehavior : MonoBehaviour, IManager
             levelPassCanvas.enabled = false;
             gameOverCanvas.enabled = true;
         }
-        
 
         currentGameState = newGameState;
     }
@@ -114,12 +105,12 @@ public class GameBehavior : MonoBehaviour, IManager
             _itemsCollected = value;
         }
     }
-
+   
     public void Initialize()
     {
-        Debug.Log(_state);
+       //Debug.Log(_state);
     }
     
-   
-
 }
+
+

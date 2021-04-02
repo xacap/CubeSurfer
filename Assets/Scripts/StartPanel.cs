@@ -6,19 +6,18 @@ public class StartPanel : MonoBehaviour
 {
     private PlayerBehavior _playerBehaviour;
 
-    private void Start()
+    private void Awake()
     {
-        _playerBehaviour = GameObject.Find("GenerateStack").GetComponent<PlayerBehavior>();
-
+       _playerBehaviour = GameObject.Find("GenerateStack").GetComponent<PlayerBehavior>();
     }
+   
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) || Input.touchCount > 0)
         {
             _playerBehaviour.run = true;
             GameBehavior.instance.StartGame();
             Destroy(this.gameObject);
-
         }
     }
 }

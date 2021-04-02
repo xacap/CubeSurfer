@@ -6,18 +6,16 @@ public class CubeBehavior : MonoBehaviour
 {
     public GameBehavior gameManager;
 
-    void Start()
+    private void Awake()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameBehavior>();
     }
-
+   
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == "GenerateStack")
         {
             Destroy(this.gameObject);
         }
-       
     }
-    
 }

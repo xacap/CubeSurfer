@@ -6,7 +6,7 @@ public class ItemBehavior : MonoBehaviour
 {
     GameBehavior _gameManager;
 
-    void Start()
+    public void Awake()
     {
         _gameManager = GameObject.Find("GameManager").GetComponent<GameBehavior>();
     }
@@ -16,11 +16,7 @@ public class ItemBehavior : MonoBehaviour
         if (collision.gameObject.name == "GenerateStack")
         { 
             Destroy(this.transform.parent.gameObject);
-
             _gameManager.Items += 1;
         }
     }
-    
-    
-    
 }

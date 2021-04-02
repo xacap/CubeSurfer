@@ -15,12 +15,10 @@ public class PlayerInStackBehaviour : MonoBehaviour
     float rayDown = 1f;
     private GameBehavior _gameManager;
 
-    void Start()
+    private void Awake()
     {
-        _gameManager = GameObject.Find("GameManager").GetComponent<GameBehavior>();
+      _gameManager = GameObject.Find("GameManager").GetComponent<GameBehavior>();
     }
-
-
     private void FixedUpdate()
     {
         Ray cubeRay = new Ray(this.transform.position, Vector3.forward);
@@ -30,55 +28,46 @@ public class PlayerInStackBehaviour : MonoBehaviour
         Debug.DrawRay(this.transform.position, Vector3.down * rayDown);
 
         RaycastHit hit;
+        Vector3 forvard = Vector3.forward;
+        Vector3 left = - Vector3.right;
+        Vector3 right = Vector3.right;
+        Vector3 direction = Vector3.zero;
 
-        if (Physics.Raycast(this.transform.position, this.transform.forward, out hit, rayDistance))
+        if(this.transform.rotation.y == 0)
+        {
+            direction = forvard;
+        }
+        else if (this.transform.rotation.y < 0)
+        {
+            direction = left;
+        }
+        else if (this.transform.rotation.y > 0)
+        {
+            direction = right;
+        }
+
+        if (Physics.Raycast(this.transform.position, direction, out hit, rayDistance))
         {
             if (hit.collider.gameObject.CompareTag("CubeWall"))
             {
-                Debug.Log("попал в стенку");
                 mState = EPlayerState.ePlayerLost;
                 _gameManager.GameFinish();
             }
             if (hit.collider.gameObject.CompareTag("FinishTrigger"))
             {
-                Debug.Log("попал в финиш");
                 mState = EPlayerState.ePlayerWinner;
                 _gameManager.LevelPassed();
-
-
             }
-            else if (hit.collider.gameObject.CompareTag("TriggerLeft"))
-            {
-
-                PlayerBehavior _go = GameObject.Find("GenerateStack").GetComponent<PlayerBehavior>();
-                _go.Turn(-90);
-            }
-            else if (hit.collider.gameObject.CompareTag("TriggerRight"))
-            {
-
-                PlayerBehavior _go = GameObject.Find("GenerateStack").GetComponent<PlayerBehavior>();
-                _go.Turn(0);
-            }
-
-
         }
         else if (Physics.Raycast(this.transform.position, Vector3.down, out hit, rayDown))
         {
             if (hit.collider.gameObject.CompareTag("platform"))
             {
-                Debug.Log("упал на пол");
                 mState = EPlayerState.ePlayerLost;
                 _gameManager.GameFinish();
-
-
             }
-
         }
-
     }
-
-
-
     public EPlayerState GetState()
     {
         return mState;

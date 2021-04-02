@@ -7,17 +7,18 @@ using UnityEngine.SceneManagement;
 public class WindowLevelPass : MonoBehaviour
 {
     public Text winTextLP;
-    public void Restart()
-    {
-        SceneManager.LoadScene(0);
-        Time.timeScale = 1.0f;
-    }
+   
     void Start()
     {
         GameObject panelNode = gameObject.transform.Find("Panel").gameObject;
         GameObject obj = panelNode.transform.Find("ButtonPlay").gameObject;
         Button button = obj.GetComponent<Button>();
         button.onClick.AddListener(() => Restart());
+    }
+    public void Restart()
+    {
+        SceneManager.LoadScene(0);
+        Time.timeScale = 1.0f;
     }
     public void Show(EPlayerState winnerBoxState)
     {

@@ -5,16 +5,10 @@ using System;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-
 public class WindowGameFinish : MonoBehaviour
 {
-
     public Text winTextFinish;
-    public void Restart()
-    {
-        SceneManager.LoadScene(0);
-        Time.timeScale = 1.0f;
-    }
+    
     void Start()
     {
         GameObject panelNode = gameObject.transform.Find("Panel").gameObject;
@@ -22,6 +16,13 @@ public class WindowGameFinish : MonoBehaviour
         Button button = obj.GetComponent<Button>();
         button.onClick.AddListener(() => Restart());
     }
+    
+    public void Restart()
+    {
+        SceneManager.LoadScene(0);
+        Time.timeScale = 1.0f;
+    }
+    
     public void Show(EPlayerState winnerBoxState)
     {
         switch (winnerBoxState)

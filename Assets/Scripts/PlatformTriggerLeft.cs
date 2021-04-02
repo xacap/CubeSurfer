@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlatformTrigger : MonoBehaviour
+public class PlatformTriggerLeft : MonoBehaviour
 {
     public GameObject thisPlatform;
     private PlayerBehavior playerBehavior;
@@ -10,11 +10,12 @@ public class PlatformTrigger : MonoBehaviour
     private void Awake()
     {
         playerBehavior = GameObject.Find("GenerateStack").GetComponent<PlayerBehavior>();
-
     }
-   
+
     void OnTriggerEnter(Collider other)
     {
+        playerBehavior.forwardXorZ = false;
+        playerBehavior.SetBlendedEulerAngles(Vector3.up * - 90);
         playerBehavior.platformPosition = thisPlatform.transform.position;
     }
 }

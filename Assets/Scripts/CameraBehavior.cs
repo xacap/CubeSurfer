@@ -12,7 +12,6 @@ public class CameraBehavior : MonoBehaviour
         target = GameObject.Find("Player(Clone)").transform;
 
         this.transform.position = target.TransformPoint(camOffset);
-
         this.transform.LookAt(target);
     }
 }
