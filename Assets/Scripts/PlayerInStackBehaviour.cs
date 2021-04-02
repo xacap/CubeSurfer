@@ -11,42 +11,30 @@ public enum EPlayerState
 public class PlayerInStackBehaviour : MonoBehaviour
 {
     private EPlayerState mState = EPlayerState.ePlayerActive;
-    float rayDistance = 0.5f;
+    float rayDistance = 0.7f;
     float rayDown = 1f;
     private GameBehavior _gameManager;
+    private Vector3 rayPositionY = new Vector3(0, -0.5f, 0);
+
 
     private void Awake()
     {
       _gameManager = GameObject.Find("GameManager").GetComponent<GameBehavior>();
+
     }
     private void FixedUpdate()
     {
-        Ray cubeRay = new Ray(this.transform.position, Vector3.forward);
-        Debug.DrawRay(this.transform.position, Vector3.forward * rayDistance);
+        Ray cubeRay = new Ray(this.transform.position + rayPositionY, Vector3.forward);
+        Debug.DrawRay(this.transform.position + rayPositionY, Vector3.forward * rayDistance);
 
         Ray cubeRay1 = new Ray(this.transform.position, Vector3.down);
         Debug.DrawRay(this.transform.position, Vector3.down * rayDown);
 
         RaycastHit hit;
-        Vector3 forvard = Vector3.forward;
-        Vector3 left = - Vector3.right;
-        Vector3 right = Vector3.right;
-        Vector3 direction = Vector3.zero;
-
-        if(this.transform.rotation.y == 0)
-        {
-            direction = forvard;
-        }
-        else if (this.transform.rotation.y < 0)
-        {
-            direction = left;
-        }
-        else if (this.transform.rotation.y > 0)
-        {
-            direction = right;
-        }
-
-        if (Physics.Raycast(this.transform.position, direction, out hit, rayDistance))
+        
+        if (Physics.Raycast(this.transform.position + rayPositionY, Vector3.forward, out hit, rayDistance) 
+            || Physics.Raycast(this.transform.position + rayPositionY, -Vector3.right, out hit, rayDistance)
+            || Physics.Raycast(this.transform.position + rayPositionY, Vector3.right, out hit, rayDistance))
         {
             if (hit.collider.gameObject.CompareTag("CubeWall"))
             {
@@ -59,6 +47,7 @@ public class PlayerInStackBehaviour : MonoBehaviour
                 _gameManager.LevelPassed();
             }
         }
+       
         else if (Physics.Raycast(this.transform.position, Vector3.down, out hit, rayDown))
         {
             if (hit.collider.gameObject.CompareTag("platform"))

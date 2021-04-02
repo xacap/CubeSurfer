@@ -548,7 +548,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 9.1837e-41}
+  m_BoundingSphereOverride: {x: 0, y: 2.3509887e-38, z: -6.3384464e+29, w: 1.7592186e+13}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -1112,7 +1112,7 @@ PrefabInstance:
     - target: {fileID: 615852678416051762, guid: 2bce77030cf7393498d3648e3ef362e6,
         type: 3}
       propertyPath: lerpTime
-      value: 30
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 615852678416051766, guid: 2bce77030cf7393498d3648e3ef362e6,
         type: 3}

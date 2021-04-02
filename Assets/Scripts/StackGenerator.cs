@@ -64,7 +64,7 @@ public class StackGenerator : MonoBehaviour
             { 
             IsKinematicOnOff();
             }
-            this.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.down * 5000);
+            this.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.down * 500);
         }
     }
     void OnCollisionEnter(Collision collision)
